@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accordion</title>
+        <script src="https://kit.fontawesome.com/a56ae5bda6.js"
+            crossorigin="anonymous"></script>
+        <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .accordion-container {
+            width: 70%;
+        }
+        
+        .accordion {
+            width: 100%;
+            text-align: start;
+            padding: 22px 30px;
+            border: 0;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .accordion:hover {
+            background-color: rgba(169, 169, 169, 0.541);
+        }
+        
+        .accordion::after {
+            content: "\002B";
+            float: right;
+            font-weight: bold;
+            color: #777;
+            font-size: 20px;
+        }
+        
+        .accordion.active::after {
+            content: "\2212";
+        }
+        
+        .panel {
+            /* display: none; */
+            overflow: hidden;
+            padding: 0 18px;
+            max-height: 0;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="accordion-container">
+            <button class="accordion ">Section1
+            </button>
+
+            <div class="panel">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In
+                    sint assumenda odio quae alias nesciunt est, quibusdam
+                    neque, voluptatum quo itaque tempora facere excepturi atque,
+                    consequatur dicta incidunt facilis. Ex delectus aliquid
+                    tempore
+                    iusto. Molestiae harum repellat saepe fugit repudiandae!</p>
+            </div>
+            <button class="accordion">Section2</button>
+            <div class="panel">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In
+                    sint assumenda odio quae alias nesciunt est, quibusdam
+                    neque, voluptatum quo itaque tempora facere excepturi atque,
+                    consequatur dicta incidunt facilis. Ex delectus aliquid
+                    tempore
+                    iusto. Molestiae harum repellat saepe fugit repudiandae!</p>
+            </div> <button class="accordion">Section3</button>
+            <div class="panel">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In
+                    sint assumenda odio quae alias nesciunt est, quibusdam
+                    neque, voluptatum quo itaque tempora facere excepturi atque,
+                    consequatur dicta incidunt facilis. Ex delectus aliquid
+                    tempore
+                    iusto. Molestiae harum repellat saepe fugit repudiandae!</p>
+            </div>
+        </div>
+
+        <!-- javascript -->
+        <script>
+        let acc = document.getElementsByClassName('accordion');
+        for (let flag of acc) {
+            flag.addEventListener('click', () => {
+                flag.classList.toggle('active');
+
+                let panel = flag.nextElementSibling;
+
+                // console.log(panel);
+                // if (panel.style.display == 'block') {
+                //     panel.style.display = 'none';
+                // } else {
+                //     panel.style.display = 'block';
+                // }
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+
+            });
+        }
+    </script>
+    </body>
+
+</html>
